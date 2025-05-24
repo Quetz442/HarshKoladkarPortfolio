@@ -30,7 +30,7 @@
   }
 }
 
-@theme {
+:root {
   --font-sans: "aeonik";
   --color-blue-50: #598eff;
   --color-blue-300: #1c34ff;
@@ -56,7 +56,9 @@ section {
 
 @layer utilities {
   .flex-center {
-    @apply flex items-center justify-center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -68,6 +70,7 @@ section {
       rgba(253, 253, 253, 0) 100%
     );
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .gradient-border {
@@ -87,6 +90,8 @@ section {
       rgba(253, 253, 253, 0) 100%
     ); /* Gradient colors */
     -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
@@ -255,6 +260,15 @@ section {
     border-bottom: 1px solid rgba(255, 255, 255, 0.01);
     background: rgba(23, 21, 31, 0.7);
     backdrop-filter: blur(10px);
+  }
+
+  .about-section .glassmorphism {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
 }
 

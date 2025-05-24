@@ -75,7 +75,7 @@ const ContactForm = () => {
             {...register("name")}
             type="text"
             id="name"
-            placeholder="Tommy"
+            placeholder=" Enter your name"
             className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-[#fafafa50] bg-black-300 rounded-md"
           />
           {errors.name && (
@@ -94,7 +94,7 @@ const ContactForm = () => {
             type="email"
             {...register("email")}
             id="email"
-            placeholder="hello@gmail.com"
+            placeholder=" Enter your email address"
             className="w-full px-4 py-4 font-light md:text-base text-sm placeholder:text-[#fafafa50] bg-black-300 rounded-md"
           />
           {errors.email && (

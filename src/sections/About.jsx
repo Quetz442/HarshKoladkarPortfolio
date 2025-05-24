@@ -8,7 +8,7 @@ import { Alien } from "../components/models/Alien";
 
 const About = () => {
   return (
-    <section id="about" className="flex-center relative md:p-0 px-5">
+    <section id="about" className="about-section flex-center relative md:p-0 px-5">
       <GradientSpheres
         sphere1Class="about-gradient-sphere about-sphere-1"
         sphere2Class="about-gradient-sphere about-sphere-2"
@@ -23,7 +23,7 @@ const About = () => {
         <div className="md:mt-20 mt-10">
           <div className="grid grid-cols-12 md:grid-rows-12 gap-5">
             <div className="md:col-span-7 col-span-12 row-span-5">
-              <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
+              <div className="bg-black-300 glassmorphism rounded-2xl p-7 w-full h-full">
                 <div>
                   <img
                     src="/images/flower.svg"
@@ -44,7 +44,7 @@ const About = () => {
               </div>
             </div>
             <div className="md:col-span-5 col-span-12 row-span-5">
-              <div className="bg-[#C8D751] hover:cursor-grab rounded-2xl w-full md:h-full h-60">
+              <div className="bg-[#C8D751] glassmorphism hover:cursor-grab rounded-2xl w-full md:h-full h-60">
                 <div className="w-full h-full">
                   <Canvas>
                     <ambientLight />
@@ -59,7 +59,7 @@ const About = () => {
               </div>
             </div>
             <div className="md:col-span-6 col-span-12 row-span-3">
-              <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
+              <div className="bg-black-300 glassmorphism rounded-2xl p-7 w-full h-full">
                 <div className="flex flex-col h-full justify-center gap-2">
                   <h1 className="gradient-title md:text-3xl text-2xl font-medium">
                     AIML
@@ -71,7 +71,7 @@ const About = () => {
               </div>
             </div>
             <div className="md:col-span-6 col-span-12 row-span-3">
-              <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
+              <div className="bg-black-300 glassmorphism rounded-2xl p-7 w-full h-full">
                 <div className="flex flex-col h-full justify-center gap-2">
                   <h1 className="gradient-title md:text-3xl text-2xl font-medium">
                     Cybersecurity
@@ -83,7 +83,7 @@ const About = () => {
               </div>
             </div>
             <div className="md:col-span-4 col-span-12 row-span-4">
-              <div className="bg-black-300 rounded-2xl p-7 w-full h-full">
+              <div className="bg-black-300 glassmorphism rounded-2xl p-7 w-full h-full">
                 <div className="flex flex-col justify-between h-full">
                   <h1 className="gradient-title md:text-5xl text-3xl font-bold">
                     BE YOURSELF!
@@ -99,7 +99,7 @@ const About = () => {
             </div>
             {bentoSocialLinks.map((item, index) => (
               <div key={index} className="md:col-span-4 col-span-12 row-span-2">
-                <div className="bg-black-300 rounded-2xl p-7 w-full h-full group cursor-pointer">
+                <div className="bg-black-300 glassmorphism rounded-2xl p-7 w-full h-full group cursor-pointer">
                   <div className="flex justify-between items-center h-full">
                     <div className="flex items-center md:gap-5">
                       <img src={item.icon} alt={item.icon} />

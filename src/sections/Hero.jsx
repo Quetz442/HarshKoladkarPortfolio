@@ -1,28 +1,49 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import GradientSpheres from "../components/GradientSpheres";
 import HeroExperience from "../components/HeroExperience";
 
 const Hero = () => {
   const scrollTimeout = useRef(null);
+  const isScrolling = useRef(false);
 
-  // Smooth scroll to bottom function
+  // Smooth scroll to bottom function (interruptable)
   const handleExploreClick = () => {
+    if (isScrolling.current) return; // Prevent multiple scrolls
+    isScrolling.current = true;
+
     const scrollStep = 20;
     const scrollInterval = 10;
 
     function smoothScroll() {
       if (
         window.innerHeight + window.scrollY <
-        document.body.offsetHeight
+          document.body.offsetHeight &&
+        isScrolling.current
       ) {
         window.scrollBy(0, scrollStep);
         scrollTimeout.current = setTimeout(smoothScroll, scrollInterval);
       } else {
         clearTimeout(scrollTimeout.current);
+        isScrolling.current = false;
       }
     }
     smoothScroll();
   };
+
+  // Stop scrolling on mouse click
+  useEffect(() => {
+    const stopScroll = () => {
+      if (isScrolling.current) {
+        isScrolling.current = false;
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+    window.addEventListener("mousedown", stopScroll);
+    return () => {
+      window.removeEventListener("mousedown", stopScroll);
+      clearTimeout(scrollTimeout.current);
+    };
+  }, []);
 
   return (
     <section
