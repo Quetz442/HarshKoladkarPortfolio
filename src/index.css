@@ -270,6 +270,79 @@ section {
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.18);
   }
+  /* Container for the pills */
+  .levitating-pills-container {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%;
+    width: 100vw;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 40;
+    pointer-events: none;
+  }
+
+  /* General pill styles */
+  .levitating-pill {
+    position: absolute;
+    min-width: 100px;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid #fff;
+    border-radius: 999px;
+    box-shadow: 0 2px 16px 0 rgba(31, 38, 135, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #fff;
+    font-size: 1.1rem;
+    pointer-events: auto;
+    transition: box-shadow 0.2s;
+  }
+
+  .pill-link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* Left-side pills */
+  .pill-left.pill-1 {
+    left: 20%; /* Move closer horizontally */
+    top: 55%; /* Adjust vertical position closer to the avatar */
+    animation: levitate 2.2s ease-in-out infinite;
+  }
+
+  .pill-left.pill-2 {
+    left: 25%; /* Move closer horizontally */
+    top: 80%; /* Adjust vertical position closer to the avatar */
+    animation: levitate 2.7s ease-in-out infinite 0.3s;
+  }
+
+  /* Right-side pills */
+  .pill-right.pill-1 {
+    right: 30%; /* Move closer horizontally */
+    top: 20%; /* Position below the text */
+    animation: levitate 2.2s ease-in-out infinite 0.6s;
+  }
+
+  .pill-right.pill-2 {
+    right: 25%; /* Move closer horizontally */
+    top: 50%; /* Position below the text */
+    animation: levitate 2.7s ease-in-out infinite 0.9s;
+  }
+
+  /* Levitation animation */
+  @keyframes levitate {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
 
 @keyframes wander-left {

@@ -29,18 +29,17 @@ const bentoSocialLinks = [
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/harsh_koladkar?igsh=YWp6dXhucTFtYjJ2",
     icon: "/images/insta.svg",
   },
   {
     name: "LinkedIn",
-    href: "https://www.facebook.com/",
+    href: "https://www.linkedin.com/in/harshkoladkar/",
     icon: "/images/linkedin.svg",
   },
   {
-    name: "WhatsApp",
-    href: "https://www.facebook.com/",
-    icon: "/images/whatsapp.svg",
+    name: "Dev.to",
+    href: "https://dev.to/harsh_koladkar",
   },
 ];
 

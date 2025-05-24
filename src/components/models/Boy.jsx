@@ -46,18 +46,53 @@ export function Boy(props) {
     if (progress === 100 && group.current) {
       // Start well below the final position
       group.current.position.y = -60;
-      // Animate up to the final position (e.g., -15)
+
+      // Animate the group to rise up
       gsap.to(group.current.position, {
-        y: -15,
+        y: -15, // Final position
         duration: 3,
         ease: "power3.out",
       });
-      gsap.from(group.current.rotation, {
-        y: Math.PI,
+
+      // Animate the group to bend forward naturally
+      group.current.rotation.x = 0; // Ensure no initial tilt
+      gsap.to(group.current.position, {
+        z: -5, // Move slightly forward to simulate bending
         duration: 1.5,
-        ease: "power1.inOut",
-        onComplete: () => setIsIntroAnimationDone(true),
+        ease: "power3.out",
       });
+      gsap.to(group.current.rotation, {
+        x: Math.PI / 8, // Slight forward bend
+        duration: 1.5,
+        ease: "power3.out",
+      });
+      gsap.to(group.current.rotation, {
+        x: 0, // Reset to default upright position
+        duration: 1.5,
+        delay: 1.5, // Start after the first bend animation
+        ease: "power3.out",
+      });
+
+      // Animate the head to look down even more dramatically
+      const head = clone.getObjectByName("Head");
+      if (head) {
+        head.rotation.x = Math.PI / 2; // Start with a very dramatic downward tilt
+        gsap.to(head.rotation, {
+          x: -Math.PI / 6, // Slight upward adjustment before resetting
+          duration: 1.5,
+          ease: "power3.out",
+        });
+        gsap.to(head.rotation, {
+          x: 0, // Reset to default position
+          duration: 1.5,
+          delay: 1.5, // Start after the first head animation
+          ease: "power3.out",
+          onComplete: () => {
+            // Mark intro animation as done after head animation completes
+            setIsIntroAnimationDone(true);
+          },
+        });
+      }
     }
   }, [progress]);
 

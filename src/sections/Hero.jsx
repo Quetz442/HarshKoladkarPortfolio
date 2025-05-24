@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import GradientSpheres from "../components/GradientSpheres";
 import HeroExperience from "../components/HeroExperience";
+import { navItems } from "../constants";
 
 const Hero = () => {
   const scrollTimeout = useRef(null);
@@ -30,7 +31,7 @@ const Hero = () => {
     smoothScroll();
   };
 
-  // Stop scrolling on mouse click
+  // Stop scrolling on mouse click or mouse wheel
   useEffect(() => {
     const stopScroll = () => {
       if (isScrolling.current) {
@@ -38,9 +39,13 @@ const Hero = () => {
         clearTimeout(scrollTimeout.current);
       }
     };
+
     window.addEventListener("mousedown", stopScroll);
+    window.addEventListener("wheel", stopScroll); // Stop scrolling on mouse wheel
+
     return () => {
       window.removeEventListener("mousedown", stopScroll);
+      window.removeEventListener("wheel", stopScroll); // Cleanup on unmount
       clearTimeout(scrollTimeout.current);
     };
   }, []);
@@ -83,6 +88,31 @@ const Hero = () => {
         </div>
       </div>
 
+      <div className="levitating-pills-container pointer-events-none">
+        {/* Left-side pills */}
+        <div className="levitating-pill pill-left pill-1">
+          <a href="#home" className="pill-link">
+            Home
+          </a>
+        </div>
+        <div className="levitating-pill pill-left pill-2">
+          <a href="#about" className="pill-link">
+            About
+          </a>
+        </div>
+
+        {/* Right-side pills */}
+        <div className="levitating-pill pill-right pill-1">
+          <a href="#projects" className="pill-link">
+            Projects
+          </a>
+        </div>
+        <div className="levitating-pill pill-right pill-2">
+          <a href="#contact" className="pill-link">
+            Contact
+          </a>
+        </div>
+      </div>
       <div className="w-full h-full absolute top-0 left-0">
         <HeroExperience />
       </div>

@@ -1,15 +1,14 @@
 import { Canvas } from "@react-three/fiber";
-import { Boy } from "./models/Boy"; // If you rename Boy to Hero, update this line
+import { Boy } from "./models/Boy";
 
 const HeroExperience = () => {
   return (
-    <Canvas>
+    <Canvas camera={{ position: [0, 0, 25], fov: 45 }}>
       <ambientLight />
       <directionalLight position={[-2, 0, 3]} intensity={3} color={"#FF28D5"} />
       <directionalLight position={[2, 0, 3]} intensity={3} color={"#1C34FF"} />
-
-      <group>
-        <Boy scale={9} />
+      <group position={[0, 4, 0]}>
+        <Boy scale={8} />
       </group>
     </Canvas>
   );
