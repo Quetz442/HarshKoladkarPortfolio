@@ -7,8 +7,8 @@ const HeroExperience = () => {
       <ambientLight />
       <directionalLight position={[-2, 0, 3]} intensity={3} color={"#FF28D5"} />
       <directionalLight position={[2, 0, 3]} intensity={3} color={"#1C34FF"} />
-      <group position={[0, 4, 0]}>
-        <Boy scale={8} />
+      <group position={[0, 5, 0]}>
+        <Boy scale={10} />
       </group>
     </Canvas>
   );

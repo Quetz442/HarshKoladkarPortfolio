@@ -53,16 +53,6 @@ const Carousel = () => {
                         {slide.title}
                       </p>
                     </div>
-                    <div className="flex-center gap-5">
-                      <p className="text-2xl hidden md:block text-white-50 opacity-80">
-                        Preview Project
-                      </p>
-                      <img
-                        src="/images/arrowupright.svg"
-                        alt="arrow"
-                        className="md:size-10 size-7"
-                      />
-                    </div>
                   </div>
                 </div>
               </div>

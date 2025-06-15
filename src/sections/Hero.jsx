@@ -1,7 +1,6 @@
 import { useRef, useEffect } from "react";
 import GradientSpheres from "../components/GradientSpheres";
 import HeroExperience from "../components/HeroExperience";
-import { navItems } from "../constants";
 
 const Hero = () => {
   const scrollTimeout = useRef(null);
@@ -53,66 +52,70 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="w-screen h-dvh overflow-hidden relative text-white-50 md:p-0 px-5"
+      className="w-screen h-dvh overflow-hidden relative text-white md:p-0 px-5"
     >
+      {/* Background Gradient */}
       <div className="gradient-box w-full h-96 absolute bottom-0 left-0 z-20"></div>
       <GradientSpheres
         sphere1Class="gradient-sphere sphere-1"
         sphere2Class="gradient-sphere sphere-2"
       />
 
+      {/* Main Content */}
       <div className="w-full h-full flex-center">
         <div className="container relative w-full h-full">
-          <div className="md:mt-40 mt-20">
-            <h1 className="font-bold md:text-9xl text-5xl">HARSH</h1>
-            <h1 className="font-bold md:text-9xl text-5xl"> KOLADKAR</h1>
-          </div>
-          <div className="absolute w-full z-30 bottom-20 right-0">
-            <div className="flex justify-between items-end">
-              <div className="flex flex-col items-center md:gap-5 gap-1">
-                <p className="md:text-base text-xs">Explore</p>
-                <img
-                  src="images/arrowdown.svg"
-                  alt="arrowdown"
-                  className="size-7 animate-bounce cursor-pointer"
-                  onClick={handleExploreClick}
-                />
-              </div>
-              <div className="flex flex-col items-end">
-                <img src="/images/shape.svg" alt="shape" />
-                <h1 className="font-bold md:text-9xl text-5xl">Full Stack</h1>
-                <h1 className="font-bold md:text-9xl text-5xl">Developer</h1>
-              </div>
+          {/* Levitating Pills */}
+          <div className="levitating-pills-container pointer-events-none">
+            {/* Left-side pills */}
+            <div className="levitating-pill pill-left pill-1 absolute top-[40%] left-[30%]">
+              <a href="#home" className="pill-link">
+                Home
+              </a>
+            </div>
+            <div className="levitating-pill pill-left pill-2 absolute top-[60%] left-[30%]">
+              <a href="#about" className="pill-link">
+                About
+              </a>
+            </div>
+
+            {/* Right-side pills */}
+            <div className="levitating-pill pill-right pill-1 absolute top-[40%] right-[30%]">
+              <a href="#projects" className="pill-link">
+                Projects
+              </a>
+            </div>
+            <div className="levitating-pill pill-right pill-2 absolute top-[60%] right-[30%]">
+              <a href="#contact" className="pill-link">
+                Contact
+              </a>
             </div>
           </div>
+
+          {/* Name at the Bottom */}
+          <div className="absolute bottom-30 left-1/2 transform -translate-x-1/2 text-center z-30">
+            <h1 className="font-bold text-white md:text-9xl text-6xl whitespace-nowrap">
+              HARSH KOLADKAR
+            </h1>
+          </div>
+
+          {/* Explore Button Below the Name */}
+<div
+  className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center text-white cursor-pointer"
+  onClick={handleExploreClick}
+>
+  <p className="md:text-base text-xs">EXPLORE</p>
+  <div className="animate-bounce mt-2">
+    <img
+      src="images/CaretRight.svg"
+      alt="arrowdown"
+      className="w-6 h-6 md:w-8 md:h-8 rotate-90"
+    />
+  </div>
+          </div>
         </div>
       </div>
 
-      <div className="levitating-pills-container pointer-events-none">
-        {/* Left-side pills */}
-        <div className="levitating-pill pill-left pill-1">
-          <a href="#home" className="pill-link">
-            Home
-          </a>
-        </div>
-        <div className="levitating-pill pill-left pill-2">
-          <a href="#about" className="pill-link">
-            About
-          </a>
-        </div>
-
-        {/* Right-side pills */}
-        <div className="levitating-pill pill-right pill-1">
-          <a href="#projects" className="pill-link">
-            Projects
-          </a>
-        </div>
-        <div className="levitating-pill pill-right pill-2">
-          <a href="#contact" className="pill-link">
-            Contact
-          </a>
-        </div>
-      </div>
+      {/* Hero Experience */}
       <div className="w-full h-full absolute top-0 left-0">
         <HeroExperience />
       </div>

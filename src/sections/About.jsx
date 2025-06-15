@@ -36,9 +36,9 @@ const About = () => {
                     Harsh Koladkar
                   </h1>
                   <p className="md:text-2xl mt-2">
-                    I am a student pursuing an engineering degree in Information Technology from A. P. Shah
+                    Hello, I am a 4th year student pursuing an engineering degree in Information Technology from A. P. Shah
                     Institute of Technology, Under the University of Mumbai. 
-                    My focus is on AIML and Cybersecurity as well as full-stack web development.
+                    My focus is on AIML, Cloud, Cybersecurity as well as full-stack web development.
                   </p>
                 </div>
               </div>

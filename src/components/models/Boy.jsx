@@ -5,9 +5,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useThree } from "@react-three/fiber";
 
 export function Boy(props) {
   const group = useRef();
+  const levitateGroup = useRef(); // Group for levitating effect
   const { progress } = useProgress();
   const [isIntroAnimationDone, setIsIntroAnimationDone] = useState(false);
 
@@ -18,8 +20,11 @@ export function Boy(props) {
 
   const mixer = useRef();
   const mouse = useRef({ x: 0, y: 0 });
-  const headLookTarget = useRef(new THREE.Vector3(0, 0, 2)); // persistent target
+  const headLookTarget = useRef(new THREE.Vector3(0, 0, 2)); // Persistent target
   const bodyTargetY = useRef(0); // Target rotation for the body
+
+  // Access the camera from the scene
+  const { camera } = useThree();
 
   useEffect(() => {
     if (clone && floatAnim.animations && floatAnim.animations.length > 0) {
@@ -36,6 +41,13 @@ export function Boy(props) {
     let frameId;
     function animate() {
       if (mixer.current) mixer.current.update(0.016);
+
+      // Levitating effect
+      if (levitateGroup.current) {
+        const t = performance.now() * 0.001; // Time in seconds
+        levitateGroup.current.position.y = Math.sin(t * 2) * 0.08; // Up & down motion
+      }
+
       frameId = requestAnimationFrame(animate);
     }
     animate();
@@ -73,19 +85,18 @@ export function Boy(props) {
         ease: "power3.out",
       });
 
-      // Animate the head to look down even more dramatically
+      // Animate the head to look down and then return to default
       const head = clone.getObjectByName("Head");
       if (head) {
-        head.rotation.x = Math.PI / 2; // Start with a very dramatic downward tilt
         gsap.to(head.rotation, {
-          x: -Math.PI / 6, // Slight upward adjustment before resetting
+          x: Math.PI / 4, // Look down
           duration: 1.5,
           ease: "power3.out",
         });
         gsap.to(head.rotation, {
           x: 0, // Reset to default position
           duration: 1.5,
-          delay: 1.5, // Start after the first head animation
+          delay: 1.5, // Start after the look-down animation
           ease: "power3.out",
           onComplete: () => {
             // Mark intro animation as done after head animation completes
@@ -122,8 +133,8 @@ export function Boy(props) {
         const headWorldPos = new THREE.Vector3();
         head.getWorldPosition(headWorldPos);
         const desiredTarget = headWorldPos.clone().add(
-          new THREE.Vector3(mouse.current.x, mouse.current.y, 2).applyQuaternion(group.current.quaternion)
-        );
+          new THREE.Vector3(mouse.current.x, mouse.current.y - 1, 2).applyQuaternion(group.current.quaternion)
+        ); // Offset the target slightly below the mouse pointer
 
         // Smoothly interpolate the look target (lerp factor: 0.07 for drama)
         headLookTarget.current.lerp(desiredTarget, 0.07);
@@ -136,7 +147,9 @@ export function Boy(props) {
 
   return (
     <group {...props} ref={group} dispose={null}>
-      <primitive object={clone} />
+      <group ref={levitateGroup}>
+        <primitive object={clone} />
+      </group>
     </group>
   );
 }
