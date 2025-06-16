@@ -4,7 +4,6 @@ import { OrbitControls } from "@react-three/drei";
 import TitleHeader from "../components/TitleHeader";
 import GradientSpheres from "../components/GradientSpheres";
 import { bentoSocialLinks } from "../constants";
-import { Alien } from "../components/models/Alien";
 
 const About = () => {
   return (
@@ -44,18 +43,8 @@ const About = () => {
               </div>
             </div>
             <div className="md:col-span-5 col-span-12 row-span-5">
-              <div className="bg-[#C8D751] glassmorphism hover:cursor-grab rounded-2xl w-full md:h-full h-60">
-                <div className="w-full h-full">
-                  <Canvas>
-                    <ambientLight />
-                    <OrbitControls enableZoom={false} />
-                    <Alien
-                      scale={2}
-                      position={[0, -5.5, 0]}
-                      rotation={[0, -0.5, 0]}
-                    />
-                  </Canvas>
-                </div>
+              <div className="glassmorphism rounded-2xl w-full md:h-full h-60">
+                <img src="" alt="" />
               </div>
             </div>
             <div className="md:col-span-6 col-span-12 row-span-3">

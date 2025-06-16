@@ -80,7 +80,7 @@ export function Boy(props) {
       });
       gsap.to(group.current.rotation, {
         x: 0, // Reset to default upright position
-        duration: 1.5,
+        duration: 5,
         delay: 1.5, // Start after the first bend animation
         ease: "power3.out",
       });
@@ -95,7 +95,7 @@ export function Boy(props) {
         });
         gsap.to(head.rotation, {
           x: 0, // Reset to default position
-          duration: 1.5,
+          duration: 1,
           delay: 1.5, // Start after the look-down animation
           ease: "power3.out",
           onComplete: () => {
